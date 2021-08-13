@@ -70,7 +70,7 @@ const Layout = ({ children }: Props) => {
   return (
     <div className="flex bg-gray-100 lg:h-full lg:w-full">
       <Head>
-        <title>jiangweixian's cheatsheet</title>
+        <title>zackinsomnia's cheatsheet</title>
       </Head>
       <SideBar className="flex-grow-0 hidden lg:flex" />
       <div className="flex-grow h-full bg-gray-100 flex flex-col" style={{ flexBasis: 0 }}>
@@ -88,13 +88,13 @@ const Layout = ({ children }: Props) => {
                 value={state.keyword}
                 placeholder="label or keywords"
                 {...unShipProps}
-                onKeyDown={e => {
+                onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     // search issues
                     handleSearch((e.target as any).value)
                   }
                 }}
-                onChange={e => dispatch.setKeyword(e.target.value)}
+                onChange={(e) => dispatch.setKeyword(e.target.value)}
                 className="placeholder-gray-400 appearance-none focus:outline-none ml-10 w-64 flex-0 h-12 p-2 text-gray-500 rounded"
               />
             </animated.div>

@@ -2,7 +2,7 @@
   "name": "cheatsheets",
   "version": "1.2.0",
   "author": {
-    "name": "jiangweixian"
+    "name": "zackradisic"
   },
   "scripts": {
     "dev": "next -p 3001",
