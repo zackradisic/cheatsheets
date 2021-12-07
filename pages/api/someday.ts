@@ -1,11 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { api } from '~/request/server'
+/**
+ * @fileoverview get random cheatsheet
+ */
+import { NextApiResponse } from 'next'
+import { NextApiRequest } from '~/interface'
+import { withOmcs } from '~/utils/middlewares'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default withOmcs(async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const items = await api.github.someday()
-    res.status(200).json(items)
+    const { hits } = await req._omcs.someday()
+    res.status(200).json(hits)
   } catch (err) {
-    res.status(500).json({ statusCode: 500, message: err.message })
+    res.status(500).json({ statusCode: 500, message: (err as any).message })
   }
-}
+})

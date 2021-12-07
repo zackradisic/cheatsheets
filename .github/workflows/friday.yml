@@ -1,0 +1,19 @@
+name: "cheatsheet bot"
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  issues:
+
+jobs:
+  # test action works running from the schedule
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ohmycheatsheet/actions-friday@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        ALGOLIA_APPID: ${{ secrets.ALGOLIA_APPID }}
+        ALGOLIA_APP_KEY: ${{ secrets.ALGOLIA_APP_KEY }}

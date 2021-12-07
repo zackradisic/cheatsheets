@@ -1,7 +1,5 @@
 /**
- * @fileoverview
- * - get all labels
- * - get part of labels
+ * @fileoverview get label detail by label id
  */
 import { NextApiResponse } from 'next'
 import { NextApiRequest } from '~/interface'
@@ -10,12 +8,7 @@ import { withOmcs, withCors } from '~/utils/middlewares'
 export default withCors(
   withOmcs(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      const offset = Number(req.query.offset || 0)
-      const length = req.query.length ? Number(req.query.length || 0) : undefined
-      const results = await req._omcs.listLabels({
-        offset,
-        length,
-      })
+      const results = await req._omcs.getLabel(req.query.labelID as string)
       res.statusCode = 200
       res.setHeader('Content-Type', 'application/json')
       res.end(JSON.stringify(results))
